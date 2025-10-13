@@ -11,6 +11,7 @@ class ToDoApp:
         self.root.geometry("280x500")
         self.root.title("To Do App")
         self.style = Style(theme = "darkly")
+        self.task_vars = []
 
         self.current_tasks = []
         self.add_task_bool = False
@@ -46,6 +47,7 @@ class ToDoApp:
         text = self.task_text.get()
         if text:
             self.current_tasks.append(text)
+            self.task_vars.append(IntVar(value = 0))
             self.task_text.set("")
             self.new_task.destroy()
             self.show_current_tasks()
@@ -57,14 +59,11 @@ class ToDoApp:
     def show_current_tasks(self):
         """Showing all the current tasks"""
         #showing all current tasks
-        self.task_vars = []
         yaxis = 50
-        for task in self.current_tasks:
+        for i, task in enumerate(self.current_tasks):
             new_task = ttk.Label(self.root, bootstyle = "warning", text = task)
             new_task.place(x = 10, y = yaxis, width = 110, height = 40)
-            text_mode_var = IntVar(value = 0)
-            self.task_vars.append(text_mode_var)
-            new_task_check = ttk.Checkbutton(self.root, bootstyle = "success", variable = text_mode_var)
+            new_task_check = ttk.Checkbutton(self.root, bootstyle = "success", variable = self.task_vars[i])
             new_task_check.place(x = 125, y = yaxis + 12)
             yaxis += 40
 
