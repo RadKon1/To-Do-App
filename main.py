@@ -16,7 +16,7 @@ class ToDoApp:
         self.current_tasks = []
         self.add_task_bool = False
         self.task_text = ttk.StringVar()
-        self.cur_tas_text_height = 40
+        self.cur_tas_text_height = 20
 
         self.add_task_bt()
         self.text_current_tasks()
@@ -28,7 +28,7 @@ class ToDoApp:
         """Showing add task button"""
         self.new_task_bt = ttk.Button(self.root,
                                       text = "New Task",
-                                      bootstyle = "primary",
+                                      bootstyle = "primary-outline",
                                       command = self.adding_task)
         self.new_task_bt.place(x = 180, y = 10, width = 90, height = 40)
 
@@ -60,6 +60,8 @@ class ToDoApp:
     def show_current_tasks(self):
         """Showing all the current tasks"""
         #showing all current tasks
+        if len(self.current_tasks) == 1:
+            self.cur_tas_text_height = 40
         self.cur_tas_text_height += 46
         self.current_tasks_label.destroy()
         self.text_current_tasks()
