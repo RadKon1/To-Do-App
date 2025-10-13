@@ -16,6 +16,7 @@ class ToDoApp:
         self.current_tasks = []
         self.add_task_bool = False
         self.task_text = ttk.StringVar()
+        self.cur_tas_text_height = 40
 
         self.add_task_bt()
         self.text_current_tasks()
@@ -53,20 +54,23 @@ class ToDoApp:
             self.show_current_tasks()
             self.add_task_bool = False
     def text_current_tasks(self):
-        self.current_tasks_label = ttk.Label(self.root, bootstyle = "inverse-info", text = "Current Tasks")
-        self.current_tasks_label.place(x = 10, y = 10, width = 90, height = 40)
+        self.current_tasks_label = ttk.Labelframe(self.root, bootstyle = "info", text = "Current Tasks")
+        self.current_tasks_label.place(x = 10, y = 10, width = 145, height = self.cur_tas_text_height)
  
     def show_current_tasks(self):
         """Showing all the current tasks"""
         #showing all current tasks
+        self.cur_tas_text_height += 46
+        self.current_tasks_label.destroy()
+        self.text_current_tasks()
         yaxis = 50
         for i, task in enumerate(self.current_tasks):
+
             new_task = ttk.Label(self.root, bootstyle = "warning", text = task)
-            new_task.place(x = 10, y = yaxis, width = 110, height = 40)
+            new_task.place(x = 20, y = yaxis, width = 110, height = 40)
             new_task_check = ttk.Checkbutton(self.root, bootstyle = "success", variable = self.task_vars[i])
             new_task_check.place(x = 125, y = yaxis + 12)
             yaxis += 40
-
 
         
 
