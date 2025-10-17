@@ -104,7 +104,7 @@ class ToDoApp:
                                                   text="Current Tasks")
         self.current_tasks_label.place(x=10,
                                        y=10,
-                                       width=145,
+                                       width=160,
                                        height=self.cur_tas_text_height)
 
     def show_current_tasks(self):
