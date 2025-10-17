@@ -20,7 +20,7 @@ class ToDoApp:
         self.add_task_bool = False
         self.del_task_bool = False
         self.task_text = ttk.StringVar()
-        self.cur_tas_text_height = 65
+        self.cur_tas_text_height = 480
         self.yaxis = 100  # liczy jak ustawiać kolejne labele i checkbutton.
         self.add_task_bt()
         self.del_task_bt()
@@ -110,12 +110,6 @@ class ToDoApp:
     def show_current_tasks(self):
         """Showing all the current tasks"""
         self.yaxis = 30
-        if len(self.current_tasks) >= 3:
-            self.cur_tas_text_height = len(self.current_tasks) * 60
-        else:
-            self.cur_tas_text_height += 40
-        self.current_tasks_label.destroy()
-        self.text_current_tasks()
         for button in self.list_of_task_buttons:
             button.destroy()
 
